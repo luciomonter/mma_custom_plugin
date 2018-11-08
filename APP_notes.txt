@@ -27,7 +27,11 @@ ios certificate passphrase (Amicucci Pesce Caldo)
 
 
 
-
+1***************
+gulp
+ionic serve -b
+resave a TS file
+http://localhost:8100
 
 
 
