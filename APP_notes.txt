@@ -33,6 +33,7 @@ ionic serve -b
 resave a TS file
 http://localhost:8100
 
+(codifica file UTF-BOM)
 
 
 
@@ -40,5 +41,37 @@ http://localhost:8100
 
 
 
+DOCUMENTAION:
 
+plugin development:
+https://docs.moodle.org/dev/Mobile_support_for_plugins#Context
+
+
+
+
+
+
+-----------------------
+appunti
+
+***Moodle Mobile additional features service:
+per vecchie moodle (< 3.4)
+installare: Moodle Mobile additional features service
+abilitare il servizio (http://link.skilla.com/TINCAN/admin/settings.php?section=externalservices)
+abilitare la capability create token per utente autenticato:
+http://link.skilla.com/TINCAN/admin/roles/define.php?action=view&roleid=7
+http://link.skilla.com/TINCAN/admin/roles/define.php
+moodle/webservice:createtoken
+*** works!
+
+CUSTOM MORE menus:
+src\core\mainmenu\pages\more
+
+CUSTOM ADDON:
+duplicate axification in addon
+src/app/app.module.ts
+
+CUSTOM ICON:
+node_modules\ionicons\dist\svg
+https://ionicons.com/
 

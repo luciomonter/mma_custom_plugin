@@ -29,6 +29,7 @@ export class CoreConstants {
     // Settings constants.
     static SETTINGS_RICH_TEXT_EDITOR = 'CoreSettingsRichTextEditor';
     static SETTINGS_NOTIFICATION_SOUND = 'CoreSettingsNotificationSound';
+    static SETTINGS_AXIFICATIONS_SOUND = 'CoreSettingsNotificationSound';
     static SETTINGS_SYNC_ONLY_ON_WIFI = 'CoreSettingsSyncOnlyOnWifi';
     static SETTINGS_REPORT_IN_BACKGROUND = 'CoreSettingsReportInBackground';
 

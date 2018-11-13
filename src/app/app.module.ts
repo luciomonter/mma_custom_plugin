@@ -110,6 +110,8 @@ import { AddonMessagesModule } from '@addon/messages/messages.module';
 import { AddonNotesModule } from '../addon/notes/notes.module';
 import { AddonPushNotificationsModule } from '@addon/pushnotifications/pushnotifications.module';
 import { AddonNotificationsModule } from '@addon/notifications/notifications.module';
+// AX_Lucio
+import { AddonAxificationsModule } from '@addon/axifications/axifications.module';
 import { AddonRemoteThemesModule } from '@addon/remotethemes/remotethemes.module';
 import { AddonQbehaviourModule } from '@addon/qbehaviour/qbehaviour.module';
 import { AddonQtypeModule } from '@addon/qtype/qtype.module';
@@ -218,6 +220,7 @@ export const CORE_PROVIDERS: any[] = [
         AddonMessagesModule,
         AddonNotesModule,
         AddonNotificationsModule,
+        AddonAxificationsModule,
         AddonPushNotificationsModule,
         AddonRemoteThemesModule,
         AddonQbehaviourModule,

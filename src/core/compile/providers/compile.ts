@@ -112,6 +112,8 @@ import { ADDON_MOD_WIKI_PROVIDERS } from '@addon/mod/wiki/wiki.module';
 import { ADDON_MOD_WORKSHOP_PROVIDERS } from '@addon/mod/workshop/workshop.module';
 import { ADDON_NOTES_PROVIDERS } from '@addon/notes/notes.module';
 import { ADDON_NOTIFICATIONS_PROVIDERS } from '@addon/notifications/notifications.module';
+/* AX_lucio */
+import { ADDON_AXIFICATIONS_PROVIDERS } from '@addon/axifications/axifications.module';
 import { ADDON_PUSHNOTIFICATIONS_PROVIDERS } from '@addon/pushnotifications/pushnotifications.module';
 import { ADDON_REMOTETHEMES_PROVIDERS } from '@addon/remotethemes/remotethemes.module';
 
@@ -227,6 +229,7 @@ export class CoreCompileProvider {
                 .concat(ADDON_MOD_QUIZ_PROVIDERS).concat(ADDON_MOD_RESOURCE_PROVIDERS).concat(ADDON_MOD_SCORM_PROVIDERS)
                 .concat(ADDON_MOD_SURVEY_PROVIDERS).concat(ADDON_MOD_URL_PROVIDERS).concat(ADDON_MOD_WIKI_PROVIDERS)
                 .concat(ADDON_MOD_WORKSHOP_PROVIDERS).concat(ADDON_NOTES_PROVIDERS).concat(ADDON_NOTIFICATIONS_PROVIDERS)
+				.concat(ADDON_AXIFICATIONS_PROVIDERS)
                 .concat(ADDON_PUSHNOTIFICATIONS_PROVIDERS).concat(ADDON_REMOTETHEMES_PROVIDERS);
 
         // We cannot inject anything to this constructor. Use the Injector to inject all the providers into the instance.

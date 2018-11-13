@@ -1,4 +1,10 @@
 {
+    "addon.axifications.axificationpreferences": "Notification preferences",
+    "addon.axifications.axifications": "Axifications",
+    "addon.axifications.errorgetaxifications": "Error getting axifications.",
+    "addon.axifications.markallread": "Mark all as read",
+    "addon.axifications.playsound": "Play sound",
+    "addon.axifications.therearentaxificationsyet": "There are no axifications.",
     "addon.badges.badgedetails": "Badge details",
     "addon.badges.badges": "Badges",
     "addon.badges.contact": "Contact",

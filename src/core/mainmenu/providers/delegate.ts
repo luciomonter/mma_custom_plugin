@@ -155,11 +155,14 @@ export class CoreMainMenuDelegate extends CoreDelegate {
      */
     updateData(): void {
         const handlersData: any[] = [];
-
+		
+		var count = 0;
         for (const name in this.enabledHandlers) {
             const handler = <CoreMainMenuHandler> this.enabledHandlers[name],
                 data = handler.getDisplayData();
 
+			count++;
+			console.log(count + " ---------------------> " + name);
             handlersData.push({
                 name: name,
                 data: data,

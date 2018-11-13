@@ -35,6 +35,7 @@ export class CoreTextUtilsProvider {
         {old: /_mmaGrades/g, new: '_CoreGrades'},
         {old: /_mmaCompetency/g, new: '_AddonCompetency'},
         {old: /_mmaNotifications/g, new: '_AddonNotifications'},
+        {old: /_mmaAxifications/g, new: '_AddonAxifications'},
         {old: /_mmaMessages/g, new: '_AddonMessages'},
         {old: /_mmaCalendar/g, new: '_AddonCalendar'},
         {old: /_mmaFiles/g, new: '_AddonFiles'},

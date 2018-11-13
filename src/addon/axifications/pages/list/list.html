@@ -1,0 +1,40 @@
+﻿<ion-header>
+    <ion-navbar core-back-button>
+        <ion-title>{{ 'addon.axifications.axifications' | translate }}</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-refresher [enabled]="axificationsLoaded" (ionRefresh)="refreshAxifications($event)">
+        <ion-refresher-content pullingText="{{ 'core.pulltorefresh' | translate }}"></ion-refresher-content>
+    </ion-refresher>
+	<h1>Hello darling! AXIFICATION!!!!</h1>
+    <core-loading [hideUntil]="axificationsLoaded">
+        <div padding *ngIf="canMarkAllAxificationsAsRead">
+            <button ion-button block (click)="markAllAxificationsAsRead()" color="light" icon-start *ngIf="!loadingMarkAllAxificationsAsRead">
+                <core-icon name="fa-check"></core-icon>
+                {{ 'addon.axifications.markallread' | translate }}
+            </button>
+            <button ion-button block color="light" icon-start *ngIf="loadingMarkAllAxificationsAsRead">
+                <ion-spinner></ion-spinner>
+            </button>
+        </div>
+        <ion-card *ngFor="let axification of axifications">
+            <ion-item>
+                <ion-avatar item-start core-user-link [userId]="axification.useridfrom" [courseId]="axification.courseid">
+                    <img [src]="axification.profileimageurlfrom || 'assets/img/user-avatar.png'" core-external-content [alt]="'core.pictureof' | translate:{$a: axification.userfromfullname}" role="presentation">
+                </ion-avatar>
+                <h2>{{axification.userfromfullname}}</h2>
+                <div item-end *ngIf="!axification.timeread"><core-icon name="fa-circle" color="primary"></core-icon></div>
+                <p>{{axification.timecreated | coreDateDayOrTime}}</p>
+            </ion-item>
+            <ion-item text-wrap>
+                <p><core-format-text [text]="axification.mobiletext | coreCreateLinks"></core-format-text></p>
+            </ion-item>
+            <addon-axifications-actions [contextUrl]="axification.contexturl" [courseId]="axification.courseid"></addon-axifications-actions>
+        </ion-card>
+        <core-empty-box *ngIf="!axifications || axifications.length <= 0" icon="axifications" [message]="'addon.axifications.therearentaxificationsyet' | translate"></core-empty-box>
+        <ion-infinite-scroll [enabled]="canLoadMore" (ionInfinite)="loadMoreAxifications($event)">
+            <ion-infinite-scroll-content></ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+    </core-loading>
+</ion-content>

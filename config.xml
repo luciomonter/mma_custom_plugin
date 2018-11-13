@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget android-versionCode="35200" id="com.skilla.bccmoodlemobile" version="3.5.2" versionCode="35200" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>BCC Skilla Moodle</name>
+    <name>Skilla Moodle custom test</name>
     <description>
-        BCC Skilla Moodle app
+        Skilla Moodle custom app
     </description>
     <author email="info@skilla.com" href="http://moodle.com">
         Skilla Moodle Mobile team
