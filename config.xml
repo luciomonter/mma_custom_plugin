@@ -138,7 +138,7 @@
     <gap:plugin name="cordova-android-support-gradle-release" source="npm">
         <param name="ANDROID_SUPPORT_VERSION" value="27.1.0" />
     </gap:plugin>
-    <edit-config file="AndroidManifest.xml" mode="merge" target="/manifest/application/activity[@android:name='SkillaMoodleCustom']">
+    <edit-config file="AndroidManifest.xml" mode="merge" target="/manifest/application/activity[@android:name='SkillaMoodlecustomtest']">
         <activity android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|screenLayout|smallestScreenSize" android:debuggable="true" />
     </edit-config>
     <preference name="permissions" value="none" />
