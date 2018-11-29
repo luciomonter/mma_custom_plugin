@@ -20,7 +20,7 @@ edit in config.xml:
     </edit-config>
 
 **** bug della lingua:
-installare il language_pack
+installare il language_pack (su moodle?)
 
 ****
 ios certificate passphrase (Amicucci Pesce Caldo)
@@ -34,11 +34,20 @@ resave a TS file
 http://localhost:8100
 
 (codifica file UTF-BOM)
+REMEMBER::
+(Remember to reinstall plugin after adding webservices)
 
 
 
 
 
+
+CUSTOMIZATION:
+- CONFIG: src/config.json + config.xml
+- JQUERY: src/index.html
+- LICENSE: src\core\settings\pages\about
+- RESOURCES: resources/ + icons
+- SASS:
 
 
 DOCUMENTAION:
@@ -46,8 +55,11 @@ DOCUMENTAION:
 plugin development:
 https://docs.moodle.org/dev/Mobile_support_for_plugins#Context
 
+webservice:
+https://docs.moodle.org/dev/Adding_a_web_service_to_a_plugin#Quick_start
 
-
+Angular directives, please check: https://angular.io/api?type=directive
+Ionic components, please check: https://ionicframework.com/docs/
 
 
 
@@ -64,14 +76,24 @@ http://link.skilla.com/TINCAN/admin/roles/define.php
 moodle/webservice:createtoken
 *** works!
 
+http://link.skilla.com/ALTRAN_TEST/phpMyAdmin/
+moodle
+8#p5dS8q
+
 CUSTOM MORE menus:
 src\core\mainmenu\pages\more
 
 CUSTOM ADDON:
 duplicate axification in addon
-src/app/app.module.ts
+add to src/app/app.module.ts
 
 CUSTOM ICON:
 node_modules\ionicons\dist\svg
 https://ionicons.com/
+
+Amicucci Pesce Caldo
+
+
+
+
 

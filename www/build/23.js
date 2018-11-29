@@ -1,6 +1,6 @@
 webpackJsonp([23],{
 
-/***/ 1888:
+/***/ 1889:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9,7 +9,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__more__ = __webpack_require__(2017);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__more__ = __webpack_require__(2018);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_components_module__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__directives_directives_module__ = __webpack_require__(14);
 // (C) Copyright 2015 Martin Dougiamas
@@ -60,7 +60,7 @@ var CoreMainMenuPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 2017:
+/***/ 2018:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -181,17 +181,16 @@ var CoreMainMenuMorePage = /** @class */ (function () {
      */
     CoreMainMenuMorePage.prototype.visitExternalLinkWithIframe = function () {
         jQuery("ng-component.app-root").attr("skilla_page_name", "skilla_bcc_comp");
-        this.navCtrl.push('CoreViewerIframePage', { title: "BCC sample", url: "http://link.skilla.com/bcc_redirect/index.html", autoLogin: "yes" });
+        this.navCtrl.push('CoreViewerIframePage', { title: "BCC sample", url: "/course/view.php?id=8", autoLogin: "yes" });
     };
     CoreMainMenuMorePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-core-mainmenu-more',template:/*ion-inline-start:"C:\wamp\www\AX-MOODLE_MOBILE_APP\mma_custom_plugin\src\core\mainmenu\pages\more\more.html"*/'<ion-header>\n\n    <ion-navbar core-back-button>\n\n        <ion-title><core-format-text [text]="siteInfo.sitename"></core-format-text></ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n\n    <ion-list>\n\n        <a ion-item core-user-link userId="{{siteInfo.userid}}">\n\n            <ion-avatar item-start>\n\n                <img [src]="siteInfo.userpictureurl" core-external-content alt="{{ \'core.pictureof\' | translate:{$a: siteInfo.fullname} }}" role="presentation">\n\n            </ion-avatar>\n\n            <p>{{siteInfo.fullname}}</p>\n\n        </a>\n\n        <ion-item-divider color="light"></ion-item-divider>\n\n        <ion-item text-center *ngIf="(!handlers || !handlers.length) && !handlersLoaded">\n\n            <ion-spinner></ion-spinner>\n\n        </ion-item>\n\n        <a ion-item *ngFor="let handler of handlers" [ngClass]="[\'core-moremenu-handler\', handler.class]" (click)="openHandler(handler)" title="{{ handler.title | translate }}" detail-push>\n\n            <core-icon [name]="handler.icon" item-start></core-icon>\n\n            <p>{{ handler.title | translate}}</p>\n\n            <ion-badge item-end *ngIf="handler.showBadge" [hidden]="handler.loading || !handler.badge">{{handler.badge}}</ion-badge>\n\n            <ion-spinner item-end *ngIf="handler.showBadge && handler.loading"></ion-spinner>\n\n        </a>\n\n        <div *ngFor="let item of customItems" class="core-moremenu-customitem">\n\n            <a ion-item *ngIf="item.type != \'embedded\'" [href]="item.url" core-link [capture]="item.type == \'app\'" [inApp]="item.type == \'inappbrowser\'" title="{{item.label}}">\n\n                <core-icon [name]="item.icon" item-start></core-icon>\n\n                <p>{{item.label}}</p>\n\n            </a>\n\n            <a ion-item *ngIf="item.type == \'embedded\'" (click)="openItem(item)" title="{{item.label}}">\n\n                <core-icon [name]="item.icon" item-start></core-icon>\n\n                <p>{{item.label}}</p>\n\n            </a>\n\n        </div>\n\n        <a *ngIf="showWeb" ion-item [href]="siteInfo.siteurl" core-link autoLogin="yes" title="{{ \'core.mainmenu.website\' | translate }}">\n\n            <ion-icon name="globe" item-start></ion-icon>\n\n            <p>{{ \'core.mainmenu.website\' | translate }}</p>\n\n        </a>\n\n        <a *ngIf="showHelp" ion-item [href]="docsUrl" core-link autoLogin="no" title="{{ \'core.mainmenu.help\' | translate }}">\n\n            <ion-icon name="help-buoy" item-start></ion-icon>\n\n            <p>{{ \'core.mainmenu.help\' | translate }}</p>\n\n        </a>\n\n        <a ion-item (click)="openSettings()" title="{{ \'core.mainmenu.appsettings\' | translate }}">\n\n            <ion-icon name="cog" item-start></ion-icon>\n\n            <p>{{ \'core.mainmenu.appsettings\' | translate }}</p>\n\n        </a>\n\n        <a ion-item (click)="logout()" title="{{ logoutLabel | translate }}">\n\n            <ion-icon name="log-out" item-start></ion-icon>\n\n            <p>{{ logoutLabel | translate }}</p>\n\n        </a>\n\n        <a ion-item (click)="visitExternalLinkWithIframe()" title="Lucio -> webview">\n\n			<ion-icon name="bicycle" item-start></ion-icon>\n\n            <p>Lucio -> webview</p>\n\n        </a>\n\n    </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\wamp\www\AX-MOODLE_MOBILE_APP\mma_custom_plugin\src\core\mainmenu\pages\more\more.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__providers_delegate__["a" /* CoreMainMenuDelegate */], __WEBPACK_IMPORTED_MODULE_3__providers_sites__["a" /* CoreSitesProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavController */], __WEBPACK_IMPORTED_MODULE_5__providers_mainmenu__["a" /* CoreMainMenuProvider */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_events__["a" /* CoreEventsProvider */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__providers_delegate__["a" /* CoreMainMenuDelegate */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_delegate__["a" /* CoreMainMenuDelegate */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__providers_sites__["a" /* CoreSitesProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_sites__["a" /* CoreSitesProvider */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__providers_mainmenu__["a" /* CoreMainMenuProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_mainmenu__["a" /* CoreMainMenuProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2__providers_events__["a" /* CoreEventsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_events__["a" /* CoreEventsProvider */]) === "function" && _e || Object])
     ], CoreMainMenuMorePage);
     return CoreMainMenuMorePage;
+    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=more.js.map

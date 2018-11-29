@@ -32,7 +32,7 @@
             </ion-item>
             <addon-axifications-actions [contextUrl]="axification.contexturl" [courseId]="axification.courseid"></addon-axifications-actions>
         </ion-card>
-        <core-empty-box *ngIf="!axifications || axifications.length <= 0" icon="axifications" [message]="'addon.axifications.therearentaxificationsyet' | translate"></core-empty-box>
+        <core-empty-box *ngIf="!axifications || axifications.length <= 0" icon="bonfire" [message]="'addon.axifications.therearentaxificationsyet' | translate"></core-empty-box>
         <ion-infinite-scroll [enabled]="canLoadMore" (ionInfinite)="loadMoreAxifications($event)">
             <ion-infinite-scroll-content></ion-infinite-scroll-content>
         </ion-infinite-scroll>

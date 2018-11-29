@@ -54,7 +54,7 @@ export class AddonAxificationsProvider {
                 axification.mobiletext = axification.fullmessage;
             }
             // Try to set courseid the axification belongs to.
-            const cid = axification.fullmessagehtml.match(/course\/view\.php\?id=([^"]*)/);
+            const cid = axification.fullmessagehtml.match(/course\/view\.php\?id=([^"]*)/); //" 
             if (cid && cid[1]) {
                 axification.courseid = cid[1];
             }
@@ -67,7 +67,7 @@ export class AddonAxificationsProvider {
                 });
             }
         });
-    }
+    } 
 
     /**
      * Get the cache key for the get axification preferences call.
@@ -128,7 +128,7 @@ export class AddonAxificationsProvider {
             const data = {
                 useridto: site.getUserId(),
                 useridfrom: 0,
-                type: 'axifications',
+                type: 'notifications',
                 read: read ? 1 : 0,
                 newestfirst: 1,
                 limitfrom: limitFrom,
@@ -142,7 +142,8 @@ export class AddonAxificationsProvider {
             };
 
             // Get unread axifications.
-            return site.read('core_message_get_messages', data, preSets).then((response) => {
+            //return site.read('core_axmessage_get_axmessages', data, preSets).then((response) => {
+            return site.read('tool_lp_data_for_user_evidence_page', data, preSets).then((response) => {
                 if (response.messages) {
                     const axifications = response.messages;
                     this.formatAxificationsData(axifications);

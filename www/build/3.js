@@ -1,6 +1,6 @@
 webpackJsonp([3],{
 
-/***/ 1798:
+/***/ 1786:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12,8 +12,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__directives_directives_module__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pipes_pipes_module__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_components_module__ = __webpack_require__(1921);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__list__ = __webpack_require__(1923);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_components_module__ = __webpack_require__(1909);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__list__ = __webpack_require__(1911);
 // (C) Copyright 2015 Martin Dougiamas
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -66,7 +66,7 @@ var AddonAxificationsListPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 1921:
+/***/ 1909:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -75,7 +75,7 @@ var AddonAxificationsListPageModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__actions_actions__ = __webpack_require__(1922);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__actions_actions__ = __webpack_require__(1910);
 // (C) Copyright 2015 Martin Dougiamas
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -126,7 +126,7 @@ var AddonAxificationsComponentsModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 1922:
+/***/ 1910:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -195,7 +195,7 @@ var AddonAxificationsActionsComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 1923:
+/***/ 1911:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -282,7 +282,7 @@ var AddonAxificationsListPage = /** @class */ (function () {
         */
         jQuery(document).ready(function () {
             console.log("ax ready!");
-            alert("axification READY");
+            //alert("axification READY");
         });
     };
     /**
@@ -319,6 +319,7 @@ var AddonAxificationsListPage = /** @class */ (function () {
                     _this.canLoadMore = read.length >= readLimit_1;
                 }).catch(function (error) {
                     if (unread.length == 0) {
+                        //alert("ax error");
                         _this.domUtils.showErrorModalDefault(error, 'addon.axifications.errorgetaxifications', true);
                         _this.canLoadMore = false; // Set to false to prevent infinite calls with infinite-loading.
                     }
@@ -401,16 +402,15 @@ var AddonAxificationsListPage = /** @class */ (function () {
      * @param {any} [refresher] Refresher.
      */
     AddonAxificationsListPage.prototype.refreshAxifications = function (refresher) {
+        var _this = this;
         alert("hey babe!");
-        /*
-        this.axificationsProvider.invalidateAxificationsList().finally(() => {
-            return this.fetchAxifications(true).finally(() => {
+        this.axificationsProvider.invalidateAxificationsList().finally(function () {
+            return _this.fetchAxifications(true).finally(function () {
                 if (refresher) {
                     refresher.complete();
                 }
             });
         });
-        */
     };
     /**
      * Load more results.
@@ -440,12 +440,14 @@ var AddonAxificationsListPage = /** @class */ (function () {
     };
     AddonAxificationsListPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-addon-axifications-list',template:/*ion-inline-start:"C:\wamp\www\AX-MOODLE_MOBILE_APP\mma_custom_plugin\src\addon\axifications\pages\list\list.html"*/'﻿<ion-header>\n\n    <ion-navbar core-back-button>\n\n        <ion-title>{{ \'addon.axifications.axifications\' | translate }}</ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n\n    <ion-refresher [enabled]="axificationsLoaded" (ionRefresh)="refreshAxifications($event)">\n\n        <ion-refresher-content pullingText="{{ \'core.pulltorefresh\' | translate }}"></ion-refresher-content>\n\n    </ion-refresher>\n\n	<h1>Hello darling! AXIFICATION!!!!</h1>\n\n    <core-loading [hideUntil]="axificationsLoaded">\n\n        <div padding *ngIf="canMarkAllAxificationsAsRead">\n\n            <button ion-button block (click)="markAllAxificationsAsRead()" color="light" icon-start *ngIf="!loadingMarkAllAxificationsAsRead">\n\n                <core-icon name="fa-check"></core-icon>\n\n                {{ \'addon.axifications.markallread\' | translate }}\n\n            </button>\n\n            <button ion-button block color="light" icon-start *ngIf="loadingMarkAllAxificationsAsRead">\n\n                <ion-spinner></ion-spinner>\n\n            </button>\n\n        </div>\n\n        <ion-card *ngFor="let axification of axifications">\n\n            <ion-item>\n\n                <ion-avatar item-start core-user-link [userId]="axification.useridfrom" [courseId]="axification.courseid">\n\n                    <img [src]="axification.profileimageurlfrom || \'assets/img/user-avatar.png\'" core-external-content [alt]="\'core.pictureof\' | translate:{$a: axification.userfromfullname}" role="presentation">\n\n                </ion-avatar>\n\n                <h2>{{axification.userfromfullname}}</h2>\n\n                <div item-end *ngIf="!axification.timeread"><core-icon name="fa-circle" color="primary"></core-icon></div>\n\n                <p>{{axification.timecreated | coreDateDayOrTime}}</p>\n\n            </ion-item>\n\n            <ion-item text-wrap>\n\n                <p><core-format-text [text]="axification.mobiletext | coreCreateLinks"></core-format-text></p>\n\n            </ion-item>\n\n            <addon-axifications-actions [contextUrl]="axification.contexturl" [courseId]="axification.courseid"></addon-axifications-actions>\n\n        </ion-card>\n\n        <core-empty-box *ngIf="!axifications || axifications.length <= 0" icon="axifications" [message]="\'addon.axifications.therearentaxificationsyet\' | translate"></core-empty-box>\n\n        <ion-infinite-scroll [enabled]="canLoadMore" (ionInfinite)="loadMoreAxifications($event)">\n\n            <ion-infinite-scroll-content></ion-infinite-scroll-content>\n\n        </ion-infinite-scroll>\n\n    </core-loading>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\wamp\www\AX-MOODLE_MOBILE_APP\mma_custom_plugin\src\addon\axifications\pages\list\list.html"*/,
+            selector: 'page-addon-axifications-list',template:/*ion-inline-start:"C:\wamp\www\AX-MOODLE_MOBILE_APP\mma_custom_plugin\src\addon\axifications\pages\list\list.html"*/'﻿<ion-header>\n\n    <ion-navbar core-back-button>\n\n        <ion-title>{{ \'addon.axifications.axifications\' | translate }}</ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n\n    <ion-refresher [enabled]="axificationsLoaded" (ionRefresh)="refreshAxifications($event)">\n\n        <ion-refresher-content pullingText="{{ \'core.pulltorefresh\' | translate }}"></ion-refresher-content>\n\n    </ion-refresher>\n\n	<h1>Hello darling! AXIFICATION!!!!</h1>\n\n    <core-loading [hideUntil]="axificationsLoaded">\n\n        <div padding *ngIf="canMarkAllAxificationsAsRead">\n\n            <button ion-button block (click)="markAllAxificationsAsRead()" color="light" icon-start *ngIf="!loadingMarkAllAxificationsAsRead">\n\n                <core-icon name="fa-check"></core-icon>\n\n                {{ \'addon.axifications.markallread\' | translate }}\n\n            </button>\n\n            <button ion-button block color="light" icon-start *ngIf="loadingMarkAllAxificationsAsRead">\n\n                <ion-spinner></ion-spinner>\n\n            </button>\n\n        </div>\n\n        <ion-card *ngFor="let axification of axifications">\n\n            <ion-item>\n\n                <ion-avatar item-start core-user-link [userId]="axification.useridfrom" [courseId]="axification.courseid">\n\n                    <img [src]="axification.profileimageurlfrom || \'assets/img/user-avatar.png\'" core-external-content [alt]="\'core.pictureof\' | translate:{$a: axification.userfromfullname}" role="presentation">\n\n                </ion-avatar>\n\n                <h2>{{axification.userfromfullname}}</h2>\n\n                <div item-end *ngIf="!axification.timeread"><core-icon name="fa-circle" color="primary"></core-icon></div>\n\n                <p>{{axification.timecreated | coreDateDayOrTime}}</p>\n\n            </ion-item>\n\n            <ion-item text-wrap>\n\n                <p><core-format-text [text]="axification.mobiletext | coreCreateLinks"></core-format-text></p>\n\n            </ion-item>\n\n            <addon-axifications-actions [contextUrl]="axification.contexturl" [courseId]="axification.courseid"></addon-axifications-actions>\n\n        </ion-card>\n\n        <core-empty-box *ngIf="!axifications || axifications.length <= 0" icon="bonfire" [message]="\'addon.axifications.therearentaxificationsyet\' | translate"></core-empty-box>\n\n        <ion-infinite-scroll [enabled]="canLoadMore" (ionInfinite)="loadMoreAxifications($event)">\n\n            <ion-infinite-scroll-content></ion-infinite-scroll-content>\n\n        </ion-infinite-scroll>\n\n    </core-loading>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\wamp\www\AX-MOODLE_MOBILE_APP\mma_custom_plugin\src\addon\axifications\pages\list\list.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavParams */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__providers_utils_dom__["a" /* CoreDomUtilsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_utils_dom__["a" /* CoreDomUtilsProvider */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__providers_events__["a" /* CoreEventsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_events__["a" /* CoreEventsProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__providers_sites__["a" /* CoreSitesProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_sites__["a" /* CoreSitesProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__providers_utils_text__["a" /* CoreTextUtilsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_utils_text__["a" /* CoreTextUtilsProvider */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_6__providers_utils_utils__["a" /* CoreUtilsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__providers_utils_utils__["a" /* CoreUtilsProvider */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_7__providers_axifications__["a" /* AddonAxificationsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__providers_axifications__["a" /* AddonAxificationsProvider */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_8__addon_pushnotifications_providers_delegate__["a" /* AddonPushNotificationsDelegate */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8__addon_pushnotifications_providers_delegate__["a" /* AddonPushNotificationsDelegate */]) === "function" && _h || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_utils_dom__["a" /* CoreDomUtilsProvider */], __WEBPACK_IMPORTED_MODULE_4__providers_events__["a" /* CoreEventsProvider */],
+            __WEBPACK_IMPORTED_MODULE_5__providers_sites__["a" /* CoreSitesProvider */], __WEBPACK_IMPORTED_MODULE_3__providers_utils_text__["a" /* CoreTextUtilsProvider */],
+            __WEBPACK_IMPORTED_MODULE_6__providers_utils_utils__["a" /* CoreUtilsProvider */], __WEBPACK_IMPORTED_MODULE_7__providers_axifications__["a" /* AddonAxificationsProvider */],
+            __WEBPACK_IMPORTED_MODULE_8__addon_pushnotifications_providers_delegate__["a" /* AddonPushNotificationsDelegate */]])
     ], AddonAxificationsListPage);
     return AddonAxificationsListPage;
-    var _a, _b, _c, _d, _e, _f, _g, _h;
 }());
 
 //# sourceMappingURL=list.js.map

@@ -75,7 +75,7 @@ export class AddonAxificationsListPage {
 		
 		jQuery( document ).ready(function() {
 			console.log( "ax ready!" );
-			alert("axification READY");
+			//alert("axification READY");
 		});		
     }
 
@@ -116,6 +116,7 @@ export class AddonAxificationsListPage {
                     this.canLoadMore = read.length >= readLimit;
                 }).catch((error) => {
                     if (unread.length == 0) {
+						//alert("ax error");
                         this.domUtils.showErrorModalDefault(error, 'addon.axifications.errorgetaxifications', true);
                         this.canLoadMore = false; // Set to false to prevent infinite calls with infinite-loading.
                     }
@@ -204,7 +205,7 @@ export class AddonAxificationsListPage {
     refreshAxifications(refresher?: any): void {
 	
 		alert("hey babe!");
-		/*
+		
         this.axificationsProvider.invalidateAxificationsList().finally(() => {
             return this.fetchAxifications(true).finally(() => {
                 if (refresher) {
@@ -212,7 +213,7 @@ export class AddonAxificationsListPage {
                 }
             });
         });
-		*/
+		
     }
 
     /**
