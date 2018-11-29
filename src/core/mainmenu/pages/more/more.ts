@@ -132,7 +132,7 @@ export class CoreMainMenuMorePage implements OnDestroy {
     visitExternalLinkWithIframe(): void {
 		
 		jQuery("ng-component.app-root").attr("skilla_page_name","skilla_bcc_comp");
-		this.navCtrl.push('CoreViewerIframePage', {title: "BCC sample", url: "/course/view.php?id=8", autoLogin:"yes"});
+		this.navCtrl.push('CoreViewerIframePage', {title: "BCC sample", url: "http://link.skilla.com/TINCAN/course/view.php?id=8", autoLogin:"yes"});
     }		
 	
 	

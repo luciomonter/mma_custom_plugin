@@ -181,7 +181,7 @@ var CoreMainMenuMorePage = /** @class */ (function () {
      */
     CoreMainMenuMorePage.prototype.visitExternalLinkWithIframe = function () {
         jQuery("ng-component.app-root").attr("skilla_page_name", "skilla_bcc_comp");
-        this.navCtrl.push('CoreViewerIframePage', { title: "BCC sample", url: "/course/view.php?id=8", autoLogin: "yes" });
+        this.navCtrl.push('CoreViewerIframePage', { title: "BCC sample", url: "http://link.skilla.com/TINCAN/course/view.php?id=8", autoLogin: "yes" });
     };
     CoreMainMenuMorePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
