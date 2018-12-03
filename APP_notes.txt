@@ -47,6 +47,7 @@ CUSTOMIZATION:
 - JQUERY: src/index.html
 - LICENSE: src\core\settings\pages\about
 - RESOURCES: resources/ + icons
+- PLUGIN: User key authentication (for autologin moodle < 3.2)
 - SASS:
 
 
@@ -94,6 +95,30 @@ https://ionicons.com/
 Amicucci Pesce Caldo
 
 
+
+
+
+
+
+
+
+
+
+PLUGIN: User key authentication
+
+https://moodle.org/plugins/view.php?plugin=auth_userkey&moodle_version=23
+https://github.com/catalyst/moodle-auth_userkey/blob/MOODLE_33PLUS/README.md
+https://github.com/catalyst/moodle-auth_userkey/tree/MOODLE_UPTO32
+
+- Install
+- Enable : User key authentication (and impostazioni)
+http://link.skilla.com/TINCAN/admin/settings.php?section=manageauths
+- Autorizzare Superadmin ad utilizziare il servizio:
+http://link.skilla.com/TINCAN/admin/webservice/service_users.php?id=10
+- Add Token for service e superadmin:
+http://link.skilla.com/TINCAN/admin/webservice/tokens.php?sesskey=RFDrnbDSxQ&action=create
+
+POST DATA example: user[username]=sim2
 
 
 
