@@ -184,7 +184,18 @@ export class CoreMainMenuDelegate extends CoreDelegate {
             return item.data;
         });
 
+		if(this.loaded){
+			console.log("here, after2");
+			setTimeout(function(){ 
+				console.log("here, after3");
+				jQuery("a#tab-t0-3").click();	 
+			}, 3000);			
+		}
+		
         this.loaded = true;
         this.siteHandlers.next(displayData);
+		
+
+		
     }
 }

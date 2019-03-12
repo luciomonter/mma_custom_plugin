@@ -10,7 +10,7 @@
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
-// limitations under the License.
+// limitations under the License. 
 
 import { Component } from '@angular/core';
 import { IonicPage, NavParams } from 'ionic-angular';
@@ -22,6 +22,8 @@ import { CoreSitesProvider } from '@providers/sites';
 import { CoreUtilsProvider } from '@providers/utils/utils';
 import { AddonAxificationsProvider } from '../../providers/axifications';
 import { AddonPushNotificationsDelegate } from '@addon/pushnotifications/providers/delegate';
+import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
+
 
 /**
  * Page that displays the list of axifications.
@@ -47,20 +49,51 @@ export class AddonAxificationsListPage {
     constructor(navParams: NavParams, private domUtils: CoreDomUtilsProvider, private eventsProvider: CoreEventsProvider,
             private sitesProvider: CoreSitesProvider, private textUtils: CoreTextUtilsProvider,
             private utils: CoreUtilsProvider, private axificationsProvider: AddonAxificationsProvider,
-            private pushNotificationsDelegate: AddonPushNotificationsDelegate) 
+            private pushNotificationsDelegate: AddonPushNotificationsDelegate, private qrScanner: QRScanner
+		) 
 	{
-			
+
+		// Optionally request the permission early
+		this.qrScanner.prepare()
+		  .then((status: QRScannerStatus) => {
+		  
+		  
+			 if (status.authorized) {
+			   // camera permission was granted
+
+
+			   // start scanning
+			   let scanSub = this.qrScanner.scan().subscribe((text: string) => {
+				 console.log('Scanned something', text);
+
+				 this.qrScanner.hide(); // hide camera preview
+				 scanSub.unsubscribe(); // stop scanning
+			   });
+
+			 } else if (status.denied) {
+			   // camera permission was permanently denied
+			   // you must use QRScanner.openSettings() method to guide the user to the settings page
+			   // then they can grant the permission from there
+			 } else {
+			   // permission was denied, but not permanently. You can ask for permission again at a later time.
+			 }
+			 
+			 
+		  })
+		  .catch((e: any) => console.log('Error is', e));			
+					
+				
     }
 
     /**
      * View loaded.
      */
     ionViewDidLoad(): void {
+		/*
         this.fetchAxifications().finally(() => {
             this.axificationsLoaded = true;
         });
-
-		/*
+				
         this.cronObserver = this.eventsProvider.on(AddonAxificationsProvider.READ_CRON_EVENT, () => this.refreshAxifications(),
                 this.sitesProvider.getCurrentSiteId());
 
@@ -73,10 +106,45 @@ export class AddonAxificationsListPage {
         });
 		*/
 		
+		this.axificationsLoaded = true;
+		
 		jQuery( document ).ready(function() {
 			console.log( "ax ready!" );
 			//alert("axification READY");
 		});		
+		
+		
+		// Optionally request the permission early
+		/*
+		this.qrScanner.prepare()
+		  .then((status: QRScannerStatus) => {
+			
+			
+			 if (status.authorized) {
+			   // camera permission was granted
+
+
+			   // start scanning
+			   let scanSub = this.qrScanner.scan().subscribe((text: string) => {
+				 console.log('Scanned something', text);
+
+				 this.qrScanner.hide(); // hide camera preview
+				 scanSub.unsubscribe(); // stop scanning
+			   });
+
+			 } else if (status.denied) {
+			   // camera permission was permanently denied
+			   // you must use QRScanner.openSettings() method to guide the user to the settings page
+			   // then they can grant the permission from there
+			 } else {
+			   // permission was denied, but not permanently. You can ask for permission again at a later time.
+			 }
+			 
+			 
+		  })
+		  .catch((e: any) => console.log('Error is', e));		
+		*/
+		
     }
 
     /**
@@ -206,6 +274,7 @@ export class AddonAxificationsListPage {
 	
 		alert("hey babe!");
 		
+		/*
         this.axificationsProvider.invalidateAxificationsList().finally(() => {
             return this.fetchAxifications(true).finally(() => {
                 if (refresher) {
@@ -213,6 +282,7 @@ export class AddonAxificationsListPage {
                 }
             });
         });
+		*/
 		
     }
 

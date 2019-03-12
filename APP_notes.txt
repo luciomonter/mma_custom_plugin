@@ -1,13 +1,16 @@
+Amicucci Pesce Caldo
 
 mio GIT HUB:
 https://github.com/luciomonter/bcc_custom_mma
 
 moodle git hub:
 https://github.com/moodlehq
+https://github.com/moodlehq/moodlemobile2/
 https://github.com/moodlehq/moodlemobile-phonegapbuild
 
 MOODLE custom app docs:
 https://docs.moodle.org/dev/Moodle_Mobile_custom_apps#Clone_the_repo_in_your_desktop
+https://docs.moodle.org/dev/Moodle_Mobile_Customization
 
 MOODLE set up emviroment:
 https://docs.moodle.org/dev/Setting_up_your_development_environment_for_Moodle_Mobile_2#Clone_the_app_base_code
@@ -20,8 +23,12 @@ edit in config.xml:
     </edit-config>
 
 **** bug della lingua:
-installare il language_pack (su moodle?)
+installare il language_pack (su moodle)
+https://lt.skilla.com/admin/tool/langimport/index.php
 
+
+**** build error IOS:
+<icon src="resources/ios/icon/icon.png" /> (aggiornare in config.xml)
 ****
 ios certificate passphrase (Amicucci Pesce Caldo)
 
@@ -39,16 +46,20 @@ REMEMBER::
 
 
 
-
+********************** LINK or QR codes:
+ltmma://link=https://lt.skilla.com/mod/scorm/view.php?id=70
+urlscheme://link=http://www.moodle......
 
 
 CUSTOMIZATION:
 - CONFIG: src/config.json + config.xml
 - JQUERY: src/index.html
 - LICENSE: src\core\settings\pages\about
-- RESOURCES: resources/ + icons
+- RESOURCES: resources/ + icons :: ionic resources ||  src/assets/img/login_logo.png + splash_logo.png (no trasparenze)
+- SASS: src/theme/variables.scss (gulp or serve) && body {margin:0;} in src/app/app.scss
+(rember: // Init screen )
 - PLUGIN: User key authentication (for autologin moodle < 3.2)
-- SASS:
+- MANIFEST: guarda sotto
 
 
 DOCUMENTAION:
@@ -62,7 +73,8 @@ https://docs.moodle.org/dev/Adding_a_web_service_to_a_plugin#Quick_start
 Angular directives, please check: https://angular.io/api?type=directive
 Ionic components, please check: https://ionicframework.com/docs/
 
-
+CUSTOM MENU ITEMS from MOODLE:
+Main menu: Custom from site | http://svilmdlaxapp.amicucci.local/bcc/local/axperformance/index.php| embedded| en
 
 -----------------------
 appunti
@@ -86,16 +98,40 @@ src\core\mainmenu\pages\more
 
 CUSTOM ADDON:
 duplicate axification in addon
-add to src/app/app.module.ts
+add to src/app/app.module.ts (in 2 punti!)
+add to src/core/compile/providers/compile.ts
 
 CUSTOM ICON:
 node_modules\ionicons\dist\svg
 https://ionicons.com/
+to add custom icon:
+http://fontello.com/
+www\assets\fonts\ionicons.svg
+www\build\main.css
 
 Amicucci Pesce Caldo
 
 
+MANIFEST customization into config.xml:
+to avoid store warnings: 
 
+/// ****toglie il warning ma su BCC causa il crash quando apri un PDF da core-iframe:
+
+	<config-file platform="ios" target="*-Info.plist" parent="UISupportsDocumentBrowser">
+      <true/>
+	</config-file>	
+	<config-file platform="ios" target="*-Info.plist" parent="LSSupportsOpeningDocumentsInPlace">
+      <true/>
+	</config-file>
+	
+/// per le push::
+	
+	<config-file platform="ios" target="*-Release.plist" parent="aps-environment">
+		<string>production</string>
+	</config-file>
+	<config-file platform="ios" target="*-Debug.plist" parent="aps-environment">
+		<string>development</string>
+	</config-file>
 
 
 
@@ -120,5 +156,139 @@ http://link.skilla.com/TINCAN/admin/webservice/tokens.php?sesskey=RFDrnbDSxQ&act
 
 POST DATA example: user[username]=sim2
 
+
+
+***********************************
+PUBLISHING
+***********************************
+
+ANDROID:
+firmare la app su phonegap
+http://docs.phonegap.com/phonegap-build/signing/android/
+Amicucci Pesce Caldo
+
+APPLE:
+itms-apps://itunes.apple.com/app/skilla-lt2019/id1450287839
+
+auto redirect example:
+https://lt.skilla.com/afmood/takeMeToApp.html
+
+
+
+
+
+
+
+
+
+
+***********************************
+PUSH NOTIFICATION - APPLE:
+***********************************
+
+* Per pubblicare un app che supporta PUSH non può essere utilizzare un mobile.provisioning con wild card... creare un profilo DEDICATO alla APP di distribuzione:
+https://developer.apple.com/account/ios/profile/production/
+-------> per ricavare il certificato per phonegap (provisiong + p12), installa il certifcato (per lo STORE) (.cer) su MAC ed esporta il .p12
+
+
+1) get .CER (for APS) from (uploading .certSigningRequest)
+https://developer.apple.com/account/ios/certificate/
+
+2) trasform CER to get PEM and KEY (we need .p12)
+
+openssl x509 -in aps_development.cer -inform der -out aps_development.pem
+
+openssl pkcs12 -in private_tljios_PROD.p12 -nocerts -out privatekey_with_password.key
+(Password45_)
+
+openssl rsa -in privatekey_with_password.key -out privatekey.key
+(Password45_)
+
+3) upload su airnotifier "privatekey.key" & "aps_development.pem"
+https://airnotifier.skilla.com (Amicucci1_)
+
+4) Enter PRODUCTION MODE BUTTON in settings
+
+5) Create Access key in Airnotifier and set it to moodle:
+ex: https://lt.skilla.com/admin/settings.php?section=messagesettingairnotifier
+
+6) Enable message push notifications AND PUSH on message for testing:
+https://lt.skilla.com/admin/message.php
+https://lt.skilla.com/message/defaultoutputs.php
+
+7) TESTING: testare mandando un messaggio privato all'utente da moodle.
+Per scopi di DEBUG guarda 
+- in moodle le tabelle:
+mdl_user_devices
+mdl_message_airnotifier_devices
+- in AIRNOTIFIER:
+tokens
+logs (tail -f airnotifier.err)
+broadcast
+
+
+***********************************
+PUSH NOTIFICATION - ANDROID:
+***********************************
+
+1) Aggiungere progetto in firebase:
+https://console.firebase.google.com/?pli=1
+
+2) compilare fino ad ottenere il file:
+google-services.json
+
+3) recuperare dal file per AIRNOTIFIER:
+"project_number": "117648747151"
+
+4) ricompilare la APP con il "project_number" inserito in config.xml e config.json
+config.xml: 
+<param name="SENDER_ID" value="117648747151" />
+src/config.json:
+"gcmpn": "117648747151",
+
+5) gulp + ionic serve -b (resave .ts) + git commit + push + phonegap update + phonegap rebuild
+
+6) In Google console abilitare l'utlizzo di chiavi crittografiche per il progetto:
+https://console.developers.google.com/project
+
+7) Dal pannello delle credenziali recuperare la chiave relativa al SERVER KEY (not android key, not browser key) ed inserirla i AIRNOTIFIER:
+https://console.developers.google.com/apis/credentials?project=lt2019
+AIzaSyD83NnmS9dadq09_00U4OQMQvqcrZUO-rs
+
+
+
+
+
+
+
+
+
+***********************************
+AIRNOTIFIER
+***********************************
+LAUNCHING DAEMON:
+service airnotifier start | stop | restart
+
+
+
+ANDROID TOKEN V2:
+curl -H "Content-Type: application/json" -H "X-AN-APP-NAME:comskillaltmoodlemobile" -H "X-AN-APP-KEY:609b944646587f6422b8b16281d39694" -X POST -d '{"device":"android","token":"dQn90oxMnHU:APA91bHX19Fe-RsrPwLgGyACVqoq6556XREHJ5HDYh5Oj646QULhgrOAQdFmZpHPwRAQdRIFzb2ujHonEpln_j5LF193UAq1Api_OeIISn_XenMK4CHryPR0n1bh6O9M_NIAcic2ZSXY", "channel":"default"}' https://airnotifier.skilla.com:443/api/v2/tokens -k
+
+IOS TOKEN V2:
+curl -H "Content-Type: application/json" -H "X-AN-APP-NAME:comskillaltmoodlemobile" -H "X-AN-APP-KEY:609b944646587f6422b8b16281d39694" -X POST -d '{"device":"ios","token":"ec54b818ecc00352b8ef957d1055039136ab10c96519c4cab730b5f76d4a32c7", "channel":"default"}' https://airnotifier.skilla.com:443/api/v2/tokens -k
+
+ANDROID SIMPLE PUSH :
+curl -H "Content-Type: application/json" -H "X-AN-APP-NAME:comskillaltmoodlemobile" -H "X-AN-APP-KEY:609b944646587f6422b8b16281d39694" -X POST -d '{"device":"android","token":"fh4YK3jEuB8:APA91bG2VLKl8WjJJ2H8v7pqCSbUUgC4WimX9I7X_lm87raqtVTao8gJKg12ZcT7mRlVmCoDKl3r-H8xomz_lEZg51tMmO6RxEsLP1kDNRHXk9KnV-B4lvUUrcuYy1HcQZdnwL3xfzBi", "alert":"Hello"}' https://airnotifier.skilla.com:443/api/v2/push -k
+
+IOS SIMPLE PUSH :
+curl -H "Content-Type: application/json" -H "X-AN-APP-NAME:comskillaltmoodlemobile" -H "X-AN-APP-KEY:609b944646587f6422b8b16281d39694" -X POST -d '{"device":"ios","token":"ec54b818ecc00352b8ef957d1055039136ab10c96519c4cab730b5f76d4a32c7", "alert":"Hello1"}' https://airnotifier.skilla.com:443/api/v2/push -k
+
+ANDROID FUNZIONANTE [AXIFICATION NAVIGATION GO not on COLDSTART] con EXTRA DATA - SEMPLIFICATO
+curl -H "Content-Type: application/json" -H "X-AN-APP-NAME:comskillaltmoodlemobile" -H "X-AN-APP-KEY:609b944646587f6422b8b16281d39694" -X POST -d '{"device":"Android","token":"d0KoIlvZDMQ:APA91bFS3eyhUGi-UYNURdY_G0VYyJ6ld2xzjMwEy2Uu9c3MAw3BZZQMrx5ScEtbnOUq0mU8jCBkFdD-MwCm6QbT8H8w7aUNzZhtSzD_zaqgkXNMs7JZuEXAKJ76_OGrXpIruhGg4Wf4","extra":{"processor":"moodle","fullmessage":"{\"message\":\"TESTO_MESSAGGIO 11\",\"axurlparams\":{\"user\":\"2\",\"urltogo\":\"https://lt.skilla.com/mod/scorm/view.php?id=51\"}}","timecreated":1522073679}}' https://airnotifier.skilla.com:443/api/v2/push -k
+
+
+
+IOS FUNZIONANTE con EXTRA DATA - SEMPLIFICATO
+curl -H "Content-Type: application/json" -H "X-AN-APP-NAME:comskillaltmoodlemobile" -H "X-AN-APP-KEY:609b944646587f6422b8b16281d39694" -X POST -d '{"device":"iOS","token":"9e5bfa025e327e882f38b6aaeb9e3565b755b1c16528cce7c6ef301b7f189e57","extra":{"processor":"moodle","fullmessage":"{\"aps\":{\"alert\":\"TESTO_MESSAGGIO 17\"},\"urlparams\":{\"user\":\"2\",\"moduleId\":56}}","timecreated":1522074618}}' https://airnotifier.skilla.com:443/api/v2/push -k
 
 

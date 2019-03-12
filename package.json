@@ -114,7 +114,10 @@
     "platforms": [
       "android",
       "ios"
-    ]
+    ],
+    "plugins": {
+      "cordova-plugin-qrscanner": {}
+    }
   },
   "main": "desktop/electron.js",
   "build": {

@@ -49,6 +49,7 @@ export class MoodleMobileApp implements OnInit {
 
             keyboard.hideKeyboardAccessoryBar(false);
         });
+	
 
     }
 
