@@ -1,4 +1,10 @@
 {
+    "addon.axifications.axificationpreferences": "Preferenze AX-ifiche",
+    "addon.axifications.axifications": "AX-ifiche",
+    "addon.axifications.errorgetaxifications": "Si è verificato un errore durante la ricezione delle AX-ifiche.",
+    "addon.axifications.markallread": "Segna tutte come già lette",
+    "addon.axifications.playsound": "Riproduci suono",
+    "addon.axifications.therearentaxificationsyet": "Non ci sono AX-ifiche.",
     "addon.badges.badgedetails": "Dettagli badge",
     "addon.badges.badges": "Badge",
     "addon.badges.contact": "Contatto",

@@ -22,7 +22,7 @@ import { CoreSitesProvider } from '@providers/sites';
 import { CoreUtilsProvider } from '@providers/utils/utils';
 import { AddonAxificationsProvider } from '../../providers/axifications';
 import { AddonPushNotificationsDelegate } from '@addon/pushnotifications/providers/delegate';
-import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
+import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 
 
 /**
@@ -60,7 +60,7 @@ export class AddonAxificationsListPage {
 		  
 			 if (status.authorized) {
 			   // camera permission was granted
-
+				alert("granted!");
 
 			   // start scanning
 			   let scanSub = this.qrScanner.scan().subscribe((text: string) => {
