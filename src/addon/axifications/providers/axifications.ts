@@ -19,7 +19,9 @@ import { CoreSitesProvider } from '@providers/sites';
 import { CoreTimeUtilsProvider } from '@providers/utils/time';
 import { CoreUserProvider } from '@core/user/providers/user';
 import { CoreEmulatorHelperProvider } from '@core/emulator/providers/helper';
-
+//import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
+//import {QRScanner, QRScannerStatus} from "@ionic-native/qr-scanner";
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 /**
  * Service to handle axifications.
@@ -37,7 +39,8 @@ export class AddonAxificationsProvider {
 
     constructor(logger: CoreLoggerProvider, private appProvider: CoreAppProvider, private sitesProvider: CoreSitesProvider,
             private timeUtils: CoreTimeUtilsProvider, private userProvider: CoreUserProvider,
-            private emulatorHelper: CoreEmulatorHelperProvider
+            private emulatorHelper: CoreEmulatorHelperProvider,
+			private barcodeScanner: BarcodeScanner
 			) {
         this.logger = logger.getInstance('AddonAxificationsProvider');
 		
@@ -71,6 +74,57 @@ export class AddonAxificationsProvider {
 
     }
 
+	prova(): void {
+		alert("prova init");
+		
+		
+		this.barcodeScanner.scan().then((barcodeData) => {
+		  
+			alert("scanned:: " + barcodeData.text);
+
+		  }, (err) => {
+				alert("error: " + err);
+		  });
+		
+		
+		
+		/*
+		this.qrScanner.prepare()
+		  .then((status: QRScannerStatus) => {
+		  
+		  
+			 if (status.authorized) {
+			   // camera permission was granted
+				alert("granted!");
+
+			   // start scanning
+			   let scanSub = this.qrScanner.scan().subscribe((text: string) => {
+				 console.log('Scanned something', text);
+				 alert("scanned:: " + text);
+				 
+				 this.qrScanner.hide(); // hide camera preview
+				 scanSub.unsubscribe(); // stop scanning
+			   });
+
+			 } else if (status.denied) {
+				alert("denied");
+			   // camera permission was permanently denied
+			   // you must use QRScanner.openSettings() method to guide the user to the settings page
+			   // then they can grant the permission from there
+			 } else {
+				alert("remanded");
+			   // permission was denied, but not permanently. You can ask for permission again at a later time.
+			 }
+			 
+			 
+		  })
+		  .catch((e: any) => console.log('Error is', e));	
+		  
+		  */
+	}
+	
+	
+	
     /**
      * Function to format axification data.
      *

@@ -112,7 +112,9 @@ import { AddonPushNotificationsModule } from '@addon/pushnotifications/pushnotif
 import { AddonNotificationsModule } from '@addon/notifications/notifications.module';
 // AX_Lucio
 import { AddonAxificationsModule } from '@addon/axifications/axifications.module';
-import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+//import { Toast } from '@ionic-native/toast';
+//import {QRScanner, QRScannerStatus} from "@ionic-native/qr-scanner/ngx";
 
 import { AddonRemoteThemesModule } from '@addon/remotethemes/remotethemes.module';
 import { AddonQbehaviourModule } from '@addon/qbehaviour/qbehaviour.module';
@@ -151,7 +153,6 @@ export const CORE_PROVIDERS: any[] = [
     CoreUpdateManagerProvider,
     CorePluginFileDelegate,
     CoreSyncProvider,
-	QRScanner,
     CoreFileHelperProvider
 ];
 
@@ -260,7 +261,6 @@ export const CORE_PROVIDERS: any[] = [
         CoreUpdateManagerProvider,
         CorePluginFileDelegate,
         CoreSyncProvider,
-		QRScanner, 
         CoreFileHelperProvider,
         {
             provide: HTTP_INTERCEPTORS,
@@ -270,6 +270,7 @@ export const CORE_PROVIDERS: any[] = [
         {provide: COMPILER_OPTIONS, useValue: {}, multi: true},
         {provide: JitCompilerFactory, useClass: JitCompilerFactory, deps: [COMPILER_OPTIONS]},
         {provide: LocationStrategy, useClass: MockLocationStrategy},
+		BarcodeScanner
     ]
 })
 export class AppModule {
@@ -311,7 +312,6 @@ export class AppModule {
         // Decorate ion-content.
         this.decorateIonContent();
 		
-		//this.qrScanner.prepare();
     }
 
     /**

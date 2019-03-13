@@ -22,8 +22,11 @@ import { CoreSitesProvider } from '@providers/sites';
 import { CoreUtilsProvider } from '@providers/utils/utils';
 import { AddonAxificationsProvider } from '../../providers/axifications';
 import { AddonPushNotificationsDelegate } from '@addon/pushnotifications/providers/delegate';
-import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
-
+//import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
+//import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
+//import { QRScanner, QRScannerStatus } from '@providers/app';
+//import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+//import { Toast } from '@ionic-native/toast';
 
 /**
  * Page that displays the list of axifications.
@@ -49,11 +52,12 @@ export class AddonAxificationsListPage {
     constructor(navParams: NavParams, private domUtils: CoreDomUtilsProvider, private eventsProvider: CoreEventsProvider,
             private sitesProvider: CoreSitesProvider, private textUtils: CoreTextUtilsProvider,
             private utils: CoreUtilsProvider, private axificationsProvider: AddonAxificationsProvider,
-            private pushNotificationsDelegate: AddonPushNotificationsDelegate, private qrScanner: QRScanner
+            private pushNotificationsDelegate: AddonPushNotificationsDelegate
 		) 
 	{
 
 		// Optionally request the permission early
+		/*
 		this.qrScanner.prepare()
 		  .then((status: QRScannerStatus) => {
 		  
@@ -65,26 +69,34 @@ export class AddonAxificationsListPage {
 			   // start scanning
 			   let scanSub = this.qrScanner.scan().subscribe((text: string) => {
 				 console.log('Scanned something', text);
-
+				 alert("scanned:: " + text);
+				 
 				 this.qrScanner.hide(); // hide camera preview
 				 scanSub.unsubscribe(); // stop scanning
 			   });
 
 			 } else if (status.denied) {
+				alert("denied");
 			   // camera permission was permanently denied
 			   // you must use QRScanner.openSettings() method to guide the user to the settings page
 			   // then they can grant the permission from there
 			 } else {
+				alert("remanded");
 			   // permission was denied, but not permanently. You can ask for permission again at a later time.
 			 }
 			 
 			 
 		  })
 		  .catch((e: any) => console.log('Error is', e));			
+		  */
 					
 				
     }
 
+	
+	
+	
+	
     /**
      * View loaded.
      */
@@ -112,6 +124,8 @@ export class AddonAxificationsListPage {
 			console.log( "ax ready!" );
 			//alert("axification READY");
 		});		
+		
+		this.axificationsProvider.prova();
 		
 		
 		// Optionally request the permission early

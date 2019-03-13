@@ -35,6 +35,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SQLite } from '@ionic-native/sqlite';
 import { WebIntent } from '@ionic-native/web-intent';
 import { Zip } from '@ionic-native/zip';
+//import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
+
+
 
 // Services that Mock Ionic Native in browser an desktop.
 import { BadgeMock } from './providers/badge';
@@ -207,7 +210,7 @@ export const IONIC_NATIVE_PROVIDERS = [
                 // Use platform instead of CoreAppProvider to prevent circular dependencies.
                 return appProvider.isMobile() ? new Zip() : new ZipMock(file, textUtils);
             }
-        },
+        }
     ]
 })
 export class CoreEmulatorModule {
