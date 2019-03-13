@@ -32,6 +32,9 @@
             </ion-item>
             <addon-axifications-actions [contextUrl]="axification.contexturl" [courseId]="axification.courseid"></addon-axifications-actions>
         </ion-card>
+		
+		<button ion-button block (click)="scanQR()" >SCAN QR CODE</button>
+		
         <core-empty-box *ngIf="!axifications || axifications.length <= 0" icon="bonfire" [message]="'addon.axifications.therearentaxificationsyet' | translate"></core-empty-box>
         <ion-infinite-scroll [enabled]="canLoadMore" (ionInfinite)="loadMoreAxifications($event)">
             <ion-infinite-scroll-content></ion-infinite-scroll-content>

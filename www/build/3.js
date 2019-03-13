@@ -1,6 +1,6 @@
 webpackJsonp([3],{
 
-/***/ 1788:
+/***/ 1832:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12,8 +12,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__directives_directives_module__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pipes_pipes_module__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_components_module__ = __webpack_require__(1911);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__list__ = __webpack_require__(1913);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_components_module__ = __webpack_require__(1955);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__list__ = __webpack_require__(1957);
 // (C) Copyright 2015 Martin Dougiamas
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -66,7 +66,7 @@ var AddonAxificationsListPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 1911:
+/***/ 1955:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -75,7 +75,7 @@ var AddonAxificationsListPageModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__actions_actions__ = __webpack_require__(1912);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__actions_actions__ = __webpack_require__(1956);
 // (C) Copyright 2015 Martin Dougiamas
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -126,7 +126,7 @@ var AddonAxificationsComponentsModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 1912:
+/***/ 1956:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -195,7 +195,7 @@ var AddonAxificationsActionsComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 1913:
+/***/ 1957:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -240,49 +240,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-//import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
-//import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
-//import { QRScanner, QRScannerStatus } from '@providers/app';
-//import { BarcodeScanner } from '@ionic-native/barcode-scanner';
-//import { Toast } from '@ionic-native/toast';
 /**
  * Page that displays the list of axifications.
  */
 var AddonAxificationsListPage = /** @class */ (function () {
     function AddonAxificationsListPage(navParams, domUtils, eventsProvider, sitesProvider, textUtils, utils, axificationsProvider, pushNotificationsDelegate) {
-        // Optionally request the permission early
-        /*
-        this.qrScanner.prepare()
-          .then((status: QRScannerStatus) => {
-          
-          
-             if (status.authorized) {
-               // camera permission was granted
-                alert("granted!");
-
-               // start scanning
-               let scanSub = this.qrScanner.scan().subscribe((text: string) => {
-                 console.log('Scanned something', text);
-                 alert("scanned:: " + text);
-                 
-                 this.qrScanner.hide(); // hide camera preview
-                 scanSub.unsubscribe(); // stop scanning
-               });
-
-             } else if (status.denied) {
-                alert("denied");
-               // camera permission was permanently denied
-               // you must use QRScanner.openSettings() method to guide the user to the settings page
-               // then they can grant the permission from there
-             } else {
-                alert("remanded");
-               // permission was denied, but not permanently. You can ask for permission again at a later time.
-             }
-             
-             
-          })
-          .catch((e: any) => console.log('Error is', e));
-          */
         this.domUtils = domUtils;
         this.eventsProvider = eventsProvider;
         this.sitesProvider = sitesProvider;
@@ -298,6 +260,13 @@ var AddonAxificationsListPage = /** @class */ (function () {
         this.readCount = 0;
         this.unreadCount = 0;
     }
+    /**
+     * call QR code Scanner in provider
+     */
+    AddonAxificationsListPage.prototype.scanQR = function () {
+        //alert("let's scan");
+        this.axificationsProvider.scanQrCode();
+    };
     /**
      * View loaded.
      */
@@ -323,37 +292,6 @@ var AddonAxificationsListPage = /** @class */ (function () {
             console.log("ax ready!");
             //alert("axification READY");
         });
-        this.axificationsProvider.prova();
-        // Optionally request the permission early
-        /*
-        this.qrScanner.prepare()
-          .then((status: QRScannerStatus) => {
-            
-            
-             if (status.authorized) {
-               // camera permission was granted
-
-
-               // start scanning
-               let scanSub = this.qrScanner.scan().subscribe((text: string) => {
-                 console.log('Scanned something', text);
-
-                 this.qrScanner.hide(); // hide camera preview
-                 scanSub.unsubscribe(); // stop scanning
-               });
-
-             } else if (status.denied) {
-               // camera permission was permanently denied
-               // you must use QRScanner.openSettings() method to guide the user to the settings page
-               // then they can grant the permission from there
-             } else {
-               // permission was denied, but not permanently. You can ask for permission again at a later time.
-             }
-             
-             
-          })
-          .catch((e: any) => console.log('Error is', e));
-        */
     };
     /**
      * Convenience function to get axifications. Gets unread axifications first.
@@ -511,7 +449,7 @@ var AddonAxificationsListPage = /** @class */ (function () {
     };
     AddonAxificationsListPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-addon-axifications-list',template:/*ion-inline-start:"C:\wamp\www\AX-MOODLE_MOBILE_APP\mma_custom_plugin\src\addon\axifications\pages\list\list.html"*/'﻿<ion-header>\n\n    <ion-navbar core-back-button>\n\n        <ion-title>{{ \'addon.axifications.axifications\' | translate }}</ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n\n    <ion-refresher [enabled]="axificationsLoaded" (ionRefresh)="refreshAxifications($event)">\n\n        <ion-refresher-content pullingText="{{ \'core.pulltorefresh\' | translate }}"></ion-refresher-content>\n\n    </ion-refresher>\n\n	<h1>Hello darling! AXIFICATION!!!!</h1>\n\n    <core-loading [hideUntil]="axificationsLoaded">\n\n        <div padding *ngIf="canMarkAllAxificationsAsRead">\n\n            <button ion-button block (click)="markAllAxificationsAsRead()" color="light" icon-start *ngIf="!loadingMarkAllAxificationsAsRead">\n\n                <core-icon name="fa-check"></core-icon>\n\n                {{ \'addon.axifications.markallread\' | translate }}\n\n            </button>\n\n            <button ion-button block color="light" icon-start *ngIf="loadingMarkAllAxificationsAsRead">\n\n                <ion-spinner></ion-spinner>\n\n            </button>\n\n        </div>\n\n        <ion-card *ngFor="let axification of axifications">\n\n            <ion-item>\n\n                <ion-avatar item-start core-user-link [userId]="axification.useridfrom" [courseId]="axification.courseid">\n\n                    <img [src]="axification.profileimageurlfrom || \'assets/img/user-avatar.png\'" core-external-content [alt]="\'core.pictureof\' | translate:{$a: axification.userfromfullname}" role="presentation">\n\n                </ion-avatar>\n\n                <h2>{{axification.userfromfullname}}</h2>\n\n                <div item-end *ngIf="!axification.timeread"><core-icon name="fa-circle" color="primary"></core-icon></div>\n\n                <p>{{axification.timecreated | coreDateDayOrTime}}</p>\n\n            </ion-item>\n\n            <ion-item text-wrap>\n\n                <p><core-format-text [text]="axification.mobiletext | coreCreateLinks"></core-format-text></p>\n\n            </ion-item>\n\n            <addon-axifications-actions [contextUrl]="axification.contexturl" [courseId]="axification.courseid"></addon-axifications-actions>\n\n        </ion-card>\n\n        <core-empty-box *ngIf="!axifications || axifications.length <= 0" icon="bonfire" [message]="\'addon.axifications.therearentaxificationsyet\' | translate"></core-empty-box>\n\n        <ion-infinite-scroll [enabled]="canLoadMore" (ionInfinite)="loadMoreAxifications($event)">\n\n            <ion-infinite-scroll-content></ion-infinite-scroll-content>\n\n        </ion-infinite-scroll>\n\n    </core-loading>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\wamp\www\AX-MOODLE_MOBILE_APP\mma_custom_plugin\src\addon\axifications\pages\list\list.html"*/,
+            selector: 'page-addon-axifications-list',template:/*ion-inline-start:"C:\wamp\www\AX-MOODLE_MOBILE_APP\mma_custom_plugin\src\addon\axifications\pages\list\list.html"*/'﻿<ion-header>\n\n    <ion-navbar core-back-button>\n\n        <ion-title>{{ \'addon.axifications.axifications\' | translate }}</ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n\n    <ion-refresher [enabled]="axificationsLoaded" (ionRefresh)="refreshAxifications($event)">\n\n        <ion-refresher-content pullingText="{{ \'core.pulltorefresh\' | translate }}"></ion-refresher-content>\n\n    </ion-refresher>\n\n	<h1>Hello darling! AXIFICATION!!!!</h1>\n\n    <core-loading [hideUntil]="axificationsLoaded">\n\n        <div padding *ngIf="canMarkAllAxificationsAsRead">\n\n            <button ion-button block (click)="markAllAxificationsAsRead()" color="light" icon-start *ngIf="!loadingMarkAllAxificationsAsRead">\n\n                <core-icon name="fa-check"></core-icon>\n\n                {{ \'addon.axifications.markallread\' | translate }}\n\n            </button>\n\n            <button ion-button block color="light" icon-start *ngIf="loadingMarkAllAxificationsAsRead">\n\n                <ion-spinner></ion-spinner>\n\n            </button>\n\n        </div>\n\n        <ion-card *ngFor="let axification of axifications">\n\n            <ion-item>\n\n                <ion-avatar item-start core-user-link [userId]="axification.useridfrom" [courseId]="axification.courseid">\n\n                    <img [src]="axification.profileimageurlfrom || \'assets/img/user-avatar.png\'" core-external-content [alt]="\'core.pictureof\' | translate:{$a: axification.userfromfullname}" role="presentation">\n\n                </ion-avatar>\n\n                <h2>{{axification.userfromfullname}}</h2>\n\n                <div item-end *ngIf="!axification.timeread"><core-icon name="fa-circle" color="primary"></core-icon></div>\n\n                <p>{{axification.timecreated | coreDateDayOrTime}}</p>\n\n            </ion-item>\n\n            <ion-item text-wrap>\n\n                <p><core-format-text [text]="axification.mobiletext | coreCreateLinks"></core-format-text></p>\n\n            </ion-item>\n\n            <addon-axifications-actions [contextUrl]="axification.contexturl" [courseId]="axification.courseid"></addon-axifications-actions>\n\n        </ion-card>\n\n		\n\n		<button ion-button block (click)="scanQR()" >SCAN QR CODE</button>\n\n		\n\n        <core-empty-box *ngIf="!axifications || axifications.length <= 0" icon="bonfire" [message]="\'addon.axifications.therearentaxificationsyet\' | translate"></core-empty-box>\n\n        <ion-infinite-scroll [enabled]="canLoadMore" (ionInfinite)="loadMoreAxifications($event)">\n\n            <ion-infinite-scroll-content></ion-infinite-scroll-content>\n\n        </ion-infinite-scroll>\n\n    </core-loading>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\wamp\www\AX-MOODLE_MOBILE_APP\mma_custom_plugin\src\addon\axifications\pages\list\list.html"*/,
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavParams */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__providers_utils_dom__["a" /* CoreDomUtilsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_utils_dom__["a" /* CoreDomUtilsProvider */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__providers_events__["a" /* CoreEventsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_events__["a" /* CoreEventsProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__providers_sites__["a" /* CoreSitesProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_sites__["a" /* CoreSitesProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__providers_utils_text__["a" /* CoreTextUtilsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_utils_text__["a" /* CoreTextUtilsProvider */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_6__providers_utils_utils__["a" /* CoreUtilsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__providers_utils_utils__["a" /* CoreUtilsProvider */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_7__providers_axifications__["a" /* AddonAxificationsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__providers_axifications__["a" /* AddonAxificationsProvider */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_8__addon_pushnotifications_providers_delegate__["a" /* AddonPushNotificationsDelegate */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8__addon_pushnotifications_providers_delegate__["a" /* AddonPushNotificationsDelegate */]) === "function" && _h || Object])
     ], AddonAxificationsListPage);

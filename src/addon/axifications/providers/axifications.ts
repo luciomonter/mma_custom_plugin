@@ -45,85 +45,20 @@ export class AddonAxificationsProvider {
         this.logger = logger.getInstance('AddonAxificationsProvider');
 		
 		console.log("-------------------------------> Axifications Provider");
-		/*
-		// Optionally request the permission early
-		this.qrScanner.prepare()
-		  .then((status: QRScannerStatus) => {
-			 if (status.authorized) {
-			   // camera permission was granted
-
-
-			   // start scanning
-			   let scanSub = this.qrScanner.scan().subscribe((text: string) => {
-				 console.log('Scanned something', text);
-
-				 this.qrScanner.hide(); // hide camera preview
-				 scanSub.unsubscribe(); // stop scanning
-			   });
-
-			 } else if (status.denied) {
-			   // camera permission was permanently denied
-			   // you must use QRScanner.openSettings() method to guide the user to the settings page
-			   // then they can grant the permission from there
-			 } else {
-			   // permission was denied, but not permanently. You can ask for permission again at a later time.
-			 }
-		  })
-		  .catch((e: any) => console.log('Error is', e));
-		*/
+		
 
     }
+	
 
-	prova(): void {
-		alert("prova init");
-		
-		
+	scanQrCode(): void {
+		//alert("prova init");
 		this.barcodeScanner.scan().then((barcodeData) => {
-		  
 			alert("scanned:: " + barcodeData.text);
-
-		  }, (err) => {
-				alert("error: " + err);
-		  });
-		
-		
-		
-		/*
-		this.qrScanner.prepare()
-		  .then((status: QRScannerStatus) => {
-		  
-		  
-			 if (status.authorized) {
-			   // camera permission was granted
-				alert("granted!");
-
-			   // start scanning
-			   let scanSub = this.qrScanner.scan().subscribe((text: string) => {
-				 console.log('Scanned something', text);
-				 alert("scanned:: " + text);
-				 
-				 this.qrScanner.hide(); // hide camera preview
-				 scanSub.unsubscribe(); // stop scanning
-			   });
-
-			 } else if (status.denied) {
-				alert("denied");
-			   // camera permission was permanently denied
-			   // you must use QRScanner.openSettings() method to guide the user to the settings page
-			   // then they can grant the permission from there
-			 } else {
-				alert("remanded");
-			   // permission was denied, but not permanently. You can ask for permission again at a later time.
-			 }
-			 
-			 
-		  })
-		  .catch((e: any) => console.log('Error is', e));	
-		  
-		  */
+		}, (err) => {
+			alert("error: " + err);
+		});
 	}
-	
-	
+		
 	
     /**
      * Function to format axification data.

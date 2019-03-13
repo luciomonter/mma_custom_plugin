@@ -292,3 +292,15 @@ IOS FUNZIONANTE con EXTRA DATA - SEMPLIFICATO
 curl -H "Content-Type: application/json" -H "X-AN-APP-NAME:comskillaltmoodlemobile" -H "X-AN-APP-KEY:609b944646587f6422b8b16281d39694" -X POST -d '{"device":"iOS","token":"9e5bfa025e327e882f38b6aaeb9e3565b755b1c16528cce7c6ef301b7f189e57","extra":{"processor":"moodle","fullmessage":"{\"aps\":{\"alert\":\"TESTO_MESSAGGIO 17\"},\"urlparams\":{\"user\":\"2\",\"moduleId\":56}}","timecreated":1522074618}}' https://airnotifier.skilla.com:443/api/v2/push -k
 
 
+
+
+******************************************************
+QR CODE SCANNER
+******************************************************
+
+https://www.djamware.com/post/59bb219f80aca768e4d2b13e/example-of-ionic-3-angular-4-cordova-barcode-and-qr-code-scanner
+
+(npm install -g cordova)
+
+ionic cordova plugin add phonegap-plugin-barcodescanner
+npm install --save @ionic-native/barcode-scanner@4
