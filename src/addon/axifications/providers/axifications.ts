@@ -50,13 +50,16 @@ export class AddonAxificationsProvider {
     }
 	
 
-	scanQrCode(): void {
+	scanQrCode(): string {
 		//alert("prova init");
 		this.barcodeScanner.scan().then((barcodeData) => {
-			alert("scanned:: " + barcodeData.text);
+			//alert("scanned:: " + barcodeData.text);
+			return(barcodeData.text);
 		}, (err) => {
 			alert("error: " + err);
+			return("");
 		});
+		//return("ltmma://link=https://lt.skilla.com/mod/scorm/view.php?id=70");
 	}
 		
 	
