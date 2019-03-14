@@ -67,15 +67,18 @@ export class AddonAxificationsListPage {
 		//alert("let's scan");
 		var urlToGo = this.axificationsProvider.scanQrCode().then((urlToGo) => {
 			alert("returned:: " + urlToGo);
-			//this.domUtils.showErrorModalDefault(error, 'returned:: ' + urlToGo, true);
-			/*
+			
          	if(urlToGo == ""){ return; }
 			var n = urlToGo.indexOf("https");
 			if(n === -1){ n = urlToGo.indexOf("http"); }
 			if(n === -1){ alert("QR not valid"); }
 			var urlParsed = urlToGo.substring(n)
 			this.linkHelper.handleLink(urlParsed);	
-			*/
+			
+        }, (err) => {
+			alert("-err: " + err);
+		}).catch((error) => {
+			alert("-error: " + error);
         });
 
 	}

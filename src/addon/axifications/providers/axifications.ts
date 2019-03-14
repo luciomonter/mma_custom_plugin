@@ -49,9 +49,25 @@ export class AddonAxificationsProvider {
 
     }
 	
-
+	/*
+	scanQrCode(): Promise<any> {
+		let prmiseQr = new Promise(
+			function (resolve, reject){
+				console.log("my psomise is executing...");
+				setTimeout(()=>{
+					console.log("resolving promises...");
+					resolve("successfull result");
+				}, 3000);
+			}
+		);
+		
+		return(prmiseQr);
+	}
+	*/
+	
 	scanQrCode(): Promise<any> {
 		//alert("prova init");
+		/*
 		var barcodeData = {};
 		barcodeData.text = "giao";
 		
@@ -65,9 +81,12 @@ export class AddonAxificationsProvider {
 			alert("-error: " + error);
 			return(barcodeData);
         });
+		*/
+		return(this.barcodeScanner.scan());
 		
 		//return("ltmma://link=https://lt.skilla.com/mod/scorm/view.php?id=70");
 	}
+	
 		
 	
     /**
