@@ -66,7 +66,7 @@ export class AddonAxificationsListPage {
 	scanQR(): void {
 		//alert("let's scan");
 		var urlToGo = this.axificationsProvider.scanQrCode().then((urlToGo) => {
-			alert("returned:: " + urlToGo);
+			//alert("returned:: " + urlToGo);
 			
          	if(urlToGo == ""){ return; }
 			var n = urlToGo.indexOf("https");
