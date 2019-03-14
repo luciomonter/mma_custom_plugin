@@ -65,9 +65,9 @@ export class AddonAxificationsListPage {
      */
 	scanQR(): void {
 		//alert("let's scan");
-		var urlToGo = this.axificationsProvider.scanQrCode().then((urlToGo) => {
+		this.axificationsProvider.scanQrCode().then((barcodeData) => {
 			//alert("returned:: " + urlToGo);
-			
+			var urlToGo = barcodeData.text;
          	if(urlToGo == ""){ return; }
 			var n = urlToGo.indexOf("https");
 			if(n === -1){ n = urlToGo.indexOf("http"); }
