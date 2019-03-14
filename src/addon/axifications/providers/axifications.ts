@@ -19,9 +19,9 @@ import { CoreSitesProvider } from '@providers/sites';
 import { CoreTimeUtilsProvider } from '@providers/utils/time';
 import { CoreUserProvider } from '@core/user/providers/user';
 import { CoreEmulatorHelperProvider } from '@core/emulator/providers/helper';
-//import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
-//import {QRScanner, QRScannerStatus} from "@ionic-native/qr-scanner";
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { CoreContentLinksHelperProvider } from '@core/contentlinks/providers/helper';
+
 
 /**
  * Service to handle axifications.
@@ -40,7 +40,8 @@ export class AddonAxificationsProvider {
     constructor(logger: CoreLoggerProvider, private appProvider: CoreAppProvider, private sitesProvider: CoreSitesProvider,
             private timeUtils: CoreTimeUtilsProvider, private userProvider: CoreUserProvider,
             private emulatorHelper: CoreEmulatorHelperProvider,
-			private barcodeScanner: BarcodeScanner
+			private barcodeScanner: BarcodeScanner,
+			private linkHelper: CoreContentLinksHelperProvider
 			) {
         this.logger = logger.getInstance('AddonAxificationsProvider');
 		
@@ -50,14 +51,23 @@ export class AddonAxificationsProvider {
     }
 	
 
-	scanQrCode(): string {
+	scanQrCode(): void {
 		//alert("prova init");
 		this.barcodeScanner.scan().then((barcodeData) => {
 			//alert("scanned:: " + barcodeData.text);
-			return(barcodeData.text);
+			//return(barcodeData.text);
+			
+			var urlToGo = barcodeData.text;
+			if(urlToGo == ""){ return; }
+			var n = urlToGo.indexOf("https");
+			if(n === -1){ n = urlToGo.indexOf("http"); }
+			if(n === -1){ alert("QR not valid"); }
+			else {
+				var urlParsed = urlToGo.substring(n)
+				this.linkHelper.handleLink(urlParsed);
+			}			
 		}, (err) => {
 			alert("error: " + err);
-			return("");
 		});
 		//return("ltmma://link=https://lt.skilla.com/mod/scorm/view.php?id=70");
 	}

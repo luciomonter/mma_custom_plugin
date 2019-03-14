@@ -22,7 +22,6 @@ import { CoreSitesProvider } from '@providers/sites';
 import { CoreUtilsProvider } from '@providers/utils/utils';
 import { AddonAxificationsProvider } from '../../providers/axifications';
 import { AddonPushNotificationsDelegate } from '@addon/pushnotifications/providers/delegate';
-import { CoreContentLinksHelperProvider } from '@core/contentlinks/providers/helper';
 
 
 /**
@@ -49,8 +48,7 @@ export class AddonAxificationsListPage {
     constructor(navParams: NavParams, private domUtils: CoreDomUtilsProvider, private eventsProvider: CoreEventsProvider,
             private sitesProvider: CoreSitesProvider, private textUtils: CoreTextUtilsProvider,
             private utils: CoreUtilsProvider, private axificationsProvider: AddonAxificationsProvider,
-            private pushNotificationsDelegate: AddonPushNotificationsDelegate,
-			private linkHelper: CoreContentLinksHelperProvider
+            private pushNotificationsDelegate: AddonPushNotificationsDelegate
 		) 
 	{
 
@@ -65,13 +63,7 @@ export class AddonAxificationsListPage {
      */
 	scanQR(): void {
 		//alert("let's scan");
-		var urlToGo = this.axificationsProvider.scanQrCode();
-		if(urlToGo == ""){ return; }
-		var n = urlToGo.indexOf("https");
-		if(n === -1){ n = urlToGo.indexOf("http"); }
-		if(n === -1){ alert("QR not valid"); }
-		var urlParsed = urlToGo.substring(n)
-		this.linkHelper.handleLink(urlParsed);	
+		this.axificationsProvider.scanQrCode();
 	}
 	
 	

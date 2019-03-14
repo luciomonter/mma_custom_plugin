@@ -46,11 +46,6 @@ REMEMBER::
 
 
 
-********************** LINK or QR codes:
-ltmma://link=https://lt.skilla.com/mod/scorm/view.php?id=70
-urlscheme://link=http://www.moodle......
-
-
 CUSTOMIZATION:
 - CONFIG: src/config.json + config.xml
 - JQUERY: src/index.html
@@ -304,3 +299,10 @@ https://www.djamware.com/post/59bb219f80aca768e4d2b13e/example-of-ionic-3-angula
 
 ionic cordova plugin add phonegap-plugin-barcodescanner
 npm install --save @ionic-native/barcode-scanner@4
+
+
+********************** LINK or QR codes:
+ltmma://link=https://lt.skilla.com/mod/scorm/view.php?id=70
+urlscheme://link=http://www.moodle......
+
+
